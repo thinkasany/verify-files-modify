@@ -27,7 +27,7 @@ async function run() {
       const skipVerifyUsers = core.getInput('skip-verify-users');
       const skipLabel = core.getInput('skip-label');
       const setFailedInput = core.getInput('set-failed');
-      const skipCount = core.getInput('skip-count');
+      const skipContributionCount = core.getInput('skip-contribution-count');
 
       if (skipLabel && labels && labels.length) {
         const labelsName = labels.map(({ name }) => name);
@@ -84,9 +84,9 @@ async function run() {
           owner,
           repo,
           author: creator,
-          per_page: skipCount,
-        })
-        const out = res.data.length >= skipCount;
+          per_page: skipContributionCount,
+        });
+        const out = res.data.length >= skipContributionCount;
         core.info(`The user ${creator} check commits count ${out}!`);
         return out;
       }
@@ -97,7 +97,7 @@ async function run() {
         result = await checkAuthority();
       }
 
-      if (!result && skipCount) {
+      if (!result && skipContributionCount) {
         result = await checkCommitsCount();
       }
 

@@ -18,7 +18,7 @@ inputs:
     description: Skip verify by github userid.
   skip-label:
     description: Skip verify by pr label.
-  skip-count:
+  skip-contribution-count:
     description: Skip verify by commits count.
   forbid-files:
     description: Forbid files. Higher than allowed.
