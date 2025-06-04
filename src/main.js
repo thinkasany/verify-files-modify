@@ -96,7 +96,7 @@ async function run() {
         result = await checkAuthority();
       }
 
-      if (skipCount) {
+      if (!result && skipCount) {
         result = await checkCommitsCount();
       }
 
